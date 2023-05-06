@@ -1,11 +1,11 @@
 import os.path
 from os import mkdir
 
-# hackeada terrible; xestiono de esta forma que ambos modulos poidan funcionar dende 
-# fora dos scripts, chamandose o un ao outro (sequences.py <---> fasta.py) sen problemas.
-# se non se fai isto, hay un bug coa clase enum no étodo _SeqFormatter que non permite executar o 
-# codigo correctamente dende sequences
-# explicación aquí: https://stackoverflow.com/questions/26589805/python-enums-across-modules
+'''hackeada terrible; xestiono de esta forma que ambos modulos poidan funcionar dende 
+fora dos scripts, chamandose o un ao outro (sequences.py <---> fasta.py) sen problemas.
+se non se fai isto, hay un bug coa clase enum no étodo _SeqFormatter que non permite executar o 
+codigo correctamente dende sequences
+explicación aquí: https://stackoverflow.com/questions/26589805/python-enums-across-modules'''
 
 if 'fasta' in __name__: # FIXME OJO CHAVAL; hackeada de relative import
     import __main__ 
@@ -90,7 +90,6 @@ class fastaProcessorIO:
 
             for elem in self.sequenceObjects:
                 formatted_object = elem._seqFormatter(case, maxlenght)
-                assert (elem != None) # TODO quitar se se corrixe o bug de importacion de enums
                 file.write('>' + formatted_object[0] + '\n')
                 file.write(formatted_object[1] + '\n')
 
@@ -113,8 +112,4 @@ if __name__ == '__main__':
     wtf = fastaProcessorIO(lista_de_secuencias)
     
     wtf.writeFastaFile('nonstatic.fasta', maxlenght= 2)
-    #TODO e agora como fago que se garde o filepath para representar en string se se usou .from_file???
-
-    ###################################################################3
-
-    
+    #TODO e agora como fago que se garde o filepath para representar en string se se usou .from_file???   

@@ -31,7 +31,7 @@ SequenceListTransformer. Proba esta clase desde o código do módulo con datos d
 exemplo.
 
 
-DUDA '''Definimos unha 'plantilla' para as nosas clases usando unha clase abstracta. A importancia de usar 
+DUDA Definimos unha 'plantilla' para as nosas clases usando unha clase abstracta. A importancia de usar 
 clases abstractas é que se as nosas subclases non seguen esa plantilla, Python dará un erro.
 Pero as transformacións son aplicadas con funcións, porque son un proceso, non unha estrutura.
 A información entra, procésase e se recupera modificada. Por tanto o único motivo que vexo para
@@ -41,9 +41,12 @@ subclases transformadoras, é:
 testamento de qué métodos debe implementar calqueira futura clase que pretenda ser un transformador.
 
 - 2: Unha intención explícita de crear obxectos para realizar as transformacións, e NON modificar 
-as cadeas das secuencias orixinais, senón crear novos obxectos que procesen e almacenen estas transformacións. 
+as cadeas das secuencias orixinais, senón crear novos obxectos que procesen e almacenen estas transformacións.
+Isto ten un impacto no uso de memoria do programa; crear obxectos que permanecen en memoria
+durante a execución ocupa máis memoria que aplicar funcións a obxectos xa existentes...
 Se este é o caso, cagueina, porque o meu código implementa funcións que toman unha lista de 
 secuencias e *modifican* as cadeas que conteñen, e despois devolven a lista coas cadeas modificadas. 
+DUDA Update. Cambieino todo e agora e non destructivo usando deepcopy. Isto é correcto??
 
 - 3: se este non é o caso, e é correcto modificar as cadeas das secuencias; entón non sería mellor
 simplemente ter unha serie de funcións nun módulo?? Ao que vou é, non sei se remato de entender 
@@ -57,3 +60,10 @@ DUDA Alternativas de estructuración de transformations_abstract:
 e as clases fillas da clase abstracta funcionan igual. A clase SequenceListTransformer, por outra
 banda, pasa a ter un método que aplica as funcións sen pasar pola clase. 
 - 3: todo con funcións
+- 4: como está pero engadindo metodos estáticos aos transformadores para poder facer usalos
+nos scripts pedidos, e o metodo normal para usar noutro script que permita combinar todos os argumentos
+de transformación 
+
+
+OPT extra script para aproveitar quue podo compoñer todas as transformacións, e acepte
+'rename', 'remove', 'reverse', 'complement', e todas ao mesmo tempo???

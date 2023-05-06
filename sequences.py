@@ -51,38 +51,6 @@ class Sequence:
                 formatted_sequence = _lenght_definer(self.sequenceChain.lower(), maxlenght) 
                 return formatted_identif, formatted_sequence
 
-# TODO cambiar de módulo???
-def reverse(seq_list : list) -> list:        
-    def _reverse(seq : Sequence):
-        seq.sequenceChain = seq.sequenceChain = seq.sequenceChain[::-1]
-        return seq
-    return list(map(_reverse, seq_list))
-    
-def complement(seq_list : list) -> list:
-    def _complement(seq : Sequence):
-        '''Substitutes nucleotids in a fasta chain with each one's complementary.'''
-        mapping = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
-
-        seq.sequenceChain = reduce((lambda x, y: x + '' + y),  # TODO optimiza para hacerlo con una sola cadena
-                    [letter.replace(letter, mapping[letter]) for letter in seq.sequenceChain])
-        return seq
-    return list(map(_complement, seq_list))
-
-def complement2(seq_list : list) -> list:
-    def _complement2(seq : Sequence): 
-        '''Substitutes nucleotids in a fasta chain with each one's complementary.'''
-        mapping = {'A': 'T', 'C': 'G', 'G': 'C', 'T': 'A'}
-
-        subchain = ''
-        for letter in seq.sequenceChain:
-            compl = letter.replace(letter, mapping[letter])
-            subchain += compl
-        seq.sequenceChain = subchain
-
-        return seq
-    return list(map(_complement2, seq_list))
-
-
             
 if __name__ == '__main__':
     from fasta import fastaProcessorIO
@@ -102,33 +70,3 @@ if __name__ == '__main__':
     
     wtf.writeFastaFile('nonstatic.fasta', maxlenght= 2) # yipee
     #TODO e agora como fago que se garde o filepath para representar en string se se usou .from_file???
-
-    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-    # From static data...
-    seq1, seq2, seq3 = Sequence('S1','ACTGGGGCT'), Sequence('S1','ACTG'), Sequence('S3','ACTG')
-    seq4, seq5, seq6 = Sequence('S1','ACTGGGGCT'),  Sequence('S1','ACTG'), Sequence('S3','ACTG')
-    seq7, seq8, seq9 = Sequence('S1','ACTGGGGCT'),  Sequence('S1','ACTG'), Sequence('S3','ACTG')
-
-    listaaa = [seq1, seq2, seq3]
-    listo = [seq4, seq5, seq6]
-    asdf = [seq7, seq8, seq9] 
-
-    x = reverse(listaaa)
-    for elem in x:
-        print(elem, '<- reverse')
-
-    y = complement(listo)
-    for elem in y:
-        print(elem, '<- compl')
-
-    z = complement2(asdf)
-    for elem in z:
-        print(elem, '<- compl2')
-
-
-    '''start = time.time()
-    for elem in asdf:
-        (complement(elem))
-    end = time.time()
-    print(end - start, 'compl')'''

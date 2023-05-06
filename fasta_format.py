@@ -9,7 +9,7 @@ import sys # stdlib imports
 from argsparser import parseArgs # local imports
 import fasta as core
 from sequences import CaseType
-from error_manager import ScriptErrorManager
+from script_utils import ScriptErrorManager
 
 ARGSET = {'input', 'output', 'case', 'maxLength'}
 
