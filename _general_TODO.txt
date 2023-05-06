@@ -1,0 +1,59 @@
+TODO implementa a organización en carpetas con cli e core, e fai un script powershell ou bash en funcion
+do S.O. que engada $PYTHONPATH á variablel de entorno cada vez que se abra a carpetas
+
+TODO optimiza as partes do código nas que se poidan usar map(), filter(), reduce(), sort() ou lambda funcións
+
+TODO fai a documentación incluíndo o parser de mermaid e as imaxe que xenere!!
+
+TODO: Documentación general; module docstrings, function docstrings, comments, etc
+
+
+
+Unha vez feito o anterior, define unha clase que reciba unha lista de secuencias e unha lista
+de transformacións e as aplique secuencialmente para producir o resultado (unha nova lista
+de secuencias resultado de aplicar todas as transformacións). Dita clase pode chamarse
+SequenceListTransformer. Proba esta clase desde o código do módulo con datos de
+exemplo.
+
+DUDA non sería mais util esto
+
+func_list = [una_cosa, otra_cosa]
+cosa = ['cosa']
+
+for elem in func_list:
+    print(list(map(elem, cosa)))
+
+se queremos facer esto:??
+Unha vez feito o anterior, define unha clase que reciba unha lista de secuencias e unha lista
+de transformacións e as aplique secuencialmente para producir o resultado (unha nova lista
+de secuencias resultado de aplicar todas as transformacións). Dita clase pode chamarse
+SequenceListTransformer. Proba esta clase desde o código do módulo con datos de
+exemplo.
+
+
+DUDA '''Definimos unha 'plantilla' para as nosas clases usando unha clase abstracta. A importancia de usar 
+clases abstractas é que se as nosas subclases non seguen esa plantilla, Python dará un erro.
+Pero as transformacións son aplicadas con funcións, porque son un proceso, non unha estrutura.
+A información entra, procésase e se recupera modificada. Por tanto o único motivo que vexo para
+pensar en utilizar unha clase abstracta con un só método e aplicala a unha serie de
+subclases transformadoras, é:
+- 1: Escalabilidade e facilidade de lectura para outros programadores, ademáis de quedar como 
+testamento de qué métodos debe implementar calqueira futura clase que pretenda ser un transformador.
+
+- 2: Unha intención explícita de crear obxectos para realizar as transformacións, e NON modificar 
+as cadeas das secuencias orixinais, senón crear novos obxectos que procesen e almacenen estas transformacións. 
+Se este é o caso, cagueina, porque o meu código implementa funcións que toman unha lista de 
+secuencias e *modifican* as cadeas que conteñen, e despois devolven a lista coas cadeas modificadas. 
+
+- 3: se este non é o caso, e é correcto modificar as cadeas das secuencias; entón non sería mellor
+simplemente ter unha serie de funcións nun módulo?? Ao que vou é, non sei se remato de entender 
+cando temos que decidir usar obxectos e cando funcións, non sei se hai unhas regras xerais de
+deseño entorno a isto ou non.
+'''
+
+DUDA Alternativas de estructuración de transformations_abstract:
+- 1: como está
+- OPT 2: sacar as funcións dos métodos e declaralas ao principio. Os métodos toman a funcións
+e as clases fillas da clase abstracta funcionan igual. A clase SequenceListTransformer, por outra
+banda, pasa a ter un método que aplica as funcións sen pasar pola clase. 
+- 3: todo con funcións

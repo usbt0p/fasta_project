@@ -1,0 +1,8 @@
+__pycache__
+.mypy_cache
+.vscode
+savedFiles
+test_data
+FASTA_Esqueleto(1).code-workspace
+core_0_1_0.py
+tempCodeRunnerFile.py
