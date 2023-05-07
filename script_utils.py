@@ -4,7 +4,7 @@ from transformations_abstract import (SequenceListTransformer, Reverse,
                                       DuplicatedIdentifiersRenamer)
 
 def script_transforms(input, output, transformation):
-    '''Manages script transformations in'''
+    '''Manages script transformations in transformer scripts.'''
 
     # Cargar o ficheiro de entrada
     input_fasta = core.fastaProcessorIO.from_file(input)
@@ -13,7 +13,7 @@ def script_transforms(input, output, transformation):
 
     # Instantiate transformer objects and update list of transformations based on given args
     if transformation in ('rename', 'remove'):
-        if transformation == 'rename':
+        if transformation == 'rename': # DUDA esto é o mesmo que a duda de se ten sentido aplicar as transformacións de unha en unha
             transformer_renamer = DuplicatedIdentifiersRenamer()
             list_of_transformations.append(transformer_renamer)
 

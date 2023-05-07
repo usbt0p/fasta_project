@@ -21,6 +21,6 @@ processed_fasta = script_transforms(args['input'], args['output'], args['modify'
 
 print('{} transformation correctly applied to {} sequences.'.format(
             (args['modify']).capitalize(), 
-            (str(len(processed_fasta.sequenceObjects)) + '.')
+            (str(len(processed_fasta.sequenceObjects)))
         )
     )

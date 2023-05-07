@@ -165,7 +165,7 @@ if __name__ == '__main__':
     print('\n')
     # firstly applied transformations remain stored as transformer objects, 
     # and transformer classes can be used by themselves
-    list(map(print, transformer_reverse.transformation)) 
+    list(map(print, transformer_reverse.transformation))
 
     
     
