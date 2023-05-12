@@ -12,9 +12,9 @@ args = parseArgs(sys.argv[1:])
 # Declare script's argument specification
 required_args = ['input', 'output', 'modify']
 optional_args = []
-special_value_args = {'modify':('reverse','complement')}
+special_value_args = {'modify':('reverse','complement', 'reverse_complement')}
 
-# Checking for script requirements BEFORE USING THE PAYLOAD FUNCTION!!!!
+# Checking for script requirements BEFORE USING THE script_transforms FUNCTION!!!!
 ScriptErrorManager.general_check(required_args, optional_args, special_value_args, args)
 
 processed_fasta = script_transforms(args['input'], args['output'], args['modify'])

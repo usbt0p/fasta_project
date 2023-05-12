@@ -3,7 +3,7 @@ from transformations_abstract import (SequenceListTransformer, Reverse,
                                       Complement, DuplicatedIdentifiersRemover, 
                                       DuplicatedIdentifiersRenamer)
 
-def script_transforms(input, output, transformation):
+def script_transforms(input, output, *transformations):
     '''Manages script transformations in transformer scripts.'''
 
     # Cargar o ficheiro de entrada
@@ -12,28 +12,31 @@ def script_transforms(input, output, transformation):
     list_of_transformations = list()
 
     # Instantiate transformer objects and update list of transformations based on given args
-    if transformation in ('rename', 'remove'):
-        if transformation == 'rename': # DUDA esto é o mesmo que a duda de se ten sentido aplicar as transformacións de unha en unha
-            transformer_renamer = DuplicatedIdentifiersRenamer()
-            list_of_transformations.append(transformer_renamer)
-
-        elif transformation == 'remove':
-            transformer_remover = DuplicatedIdentifiersRemover()
-            list_of_transformations.append(transformer_remover)
-
-    elif transformation in ('reverse', 'complement'):
-        if transformation == 'reverse':
-            transformer_reverse = Reverse()
-            list_of_transformations.append(transformer_reverse)
-
-        elif transformation == 'complement':
-            transformer_complement = Complement()
-            list_of_transformations.append(transformer_complement)
+    # All scripts take one single arg except for multiple_transformations, and 
+    # the design with a for loop and match stems from the design constraints that poses
+    print(transformations)
+    for transformation in transformations:
+        match transformation:
+            case None:
+                continue
+            case 'rename':
+                list_of_transformations.append(DuplicatedIdentifiersRenamer())
+            case 'remove':
+                list_of_transformations.append(DuplicatedIdentifiersRemover())
+            case 'reverse':
+                list_of_transformations.append(Reverse())
+            case 'complement':
+                list_of_transformations.append(Complement())
+            case 'reverse_complement':
+                list_of_transformations.extend([Reverse(), Complement()])
 
     # Instantiate to apply all trasformations once the list has been defined
     # The .apply_transformations method directly returns the new list without storing it in the object
-    new_fasta = SequenceListTransformer.apply_transformations(
-            list_of_transformations, input_fasta.sequenceObjects)
+    
+    transformer_object = SequenceListTransformer(list_of_transformations)
+    new_fasta = transformer_object.apply_transformations(
+        transformer_object.transf_list, input_fasta.sequenceObjects)
+    
     # .writeFastaFile calls to self.sequenceobjects, so a fastaProcessorIO must be instantiated 
     to_output = core.fastaProcessorIO(new_fasta)
     

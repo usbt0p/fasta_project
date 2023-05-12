@@ -20,9 +20,4 @@ ScriptErrorManager.general_check(required_args, optional_args, special_value_arg
 
 processed_fasta = script_transforms(args['input'], args['output'], args['mode'])
 
-# DUDA por que carallo se me pide que haga una clase SequenceListTransformer que pueda aplicar
-# transformaciones a todo de forma unitaria si luego los scripts solo aceptan una transformacion
-# de cada vez????
-
 print('Number of sequences after disambiguation: ', (str(len(processed_fasta.sequenceObjects)) + '.')) 
-# OPT: fix weird ass tracebacks???

@@ -1,6 +1,4 @@
 from enum import Enum
-from re import sub
-from functools import reduce
 
 class CaseType(Enum):
     ORIGINAL = 0
@@ -9,7 +7,7 @@ class CaseType(Enum):
 
 class Sequence: 
     '''In charge of Sequence objects. 
-    Stores sequence idfentifier and DNA sequence as attributes of the object.
+    Stores sequence identifier and DNA sequence as attributes of the object.
     '''
     num_instances : int = 0
 
@@ -69,4 +67,4 @@ if __name__ == '__main__':
     wtf = fastaProcessorIO(lista_de_secuencias)
     
     wtf.writeFastaFile('nonstatic.fasta', maxlenght= 2) # yipee
-    #TODO e agora como fago que se garde o filepath para representar en string se se usou .from_file???
+    print(wtf)

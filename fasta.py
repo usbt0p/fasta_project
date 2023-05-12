@@ -1,19 +1,16 @@
 import os.path
 from os import mkdir
 
-'''hackeada terrible; xestiono de esta forma que ambos modulos poidan funcionar dende 
-fora dos scripts, chamandose o un ao outro (sequences.py <---> fasta.py) sen problemas.
-se non se fai isto, hay un bug coa clase enum no étodo _SeqFormatter que non permite executar o 
-codigo correctamente dende sequences
-explicación aquí: https://stackoverflow.com/questions/26589805/python-enums-across-modules'''
+'''xestiono de esta forma que ambos modulos poidan funcionar dende 
+fora dos scripts, chamandose o un ao outro (sequences.py <---> fasta.py) sen problemas.'''
 
-if 'fasta' in __name__: # FIXME OJO CHAVAL; hackeada de relative import
+if 'fasta' in __name__: 
     import __main__ 
     if 'sequences.py' in __main__.__file__:
             Sequence = __main__.Sequence 
             CaseType = __main__.CaseType # e así se asegura que cando se chama dende sequences todo funcione
     else:
-        from sequences import Sequence, CaseType # FIXME OJO CHAVAL; hackeada de relative import
+        from sequences import Sequence, CaseType
 else:
     from sequences import Sequence, CaseType # isto faise cando fasta.py é __main__
 
@@ -41,10 +38,9 @@ def _fasta_load(fastaFilePath : str) -> list[Sequence]:
         sequence_list.append(chain) # add the last iteration of the loop
         sequence_list.pop(0) # remove the first ''
 
-        sequenceObjects = []
-        for identifier, sequence in zip(identif_list, sequence_list):
-            sequence_instance = Sequence(identifier, sequence)
-            sequenceObjects.append(sequence_instance)
+        sequenceObjects = [
+            Sequence(identifier, sequence) for identifier, sequence in 
+            zip(identif_list, sequence_list)]
 
         return sequenceObjects
 
@@ -65,11 +61,12 @@ class fastaProcessorIO:
         return fastaProcessorIO(_fasta_load(fastaFilePath))
 
     def __str__(self) -> str:
-        if len(self.sequenceObjects) > 25: # prettify if there are a lot of objects being loaded
-            representation = [str(elem) for elem in self.sequenceObjects[:25]]
+        if len(self.sequenceObjects) > 10: # prettify if there are a lot of objects being loaded
+            representation = [str(elem) for elem in self.sequenceObjects[:3]]
             representation.append('...')
-        representation = [str(elem) for elem in self.sequenceObjects]
-        return 'Saved ({}) Sequence objects: {}'.format(Sequence.num_instances, representation)
+        else:
+            representation = [str(elem) for elem in self.sequenceObjects]
+        return 'Saved ({}) Sequence objects: {}'.format(len(self.sequenceObjects), representation)
 
     def writeFastaFile(self, filename : str, case : CaseType = CaseType.ORIGINAL, 
                        maxlenght : int = 0, absolutepath=''): 
@@ -81,10 +78,10 @@ class fastaProcessorIO:
 
         if not absolutepath:
             dirpath = 'savedFiles'
-            if not os.path.isdir(dirpath): #OPT directorio actual no el dir random en el que se esté ahora!!
+            if not os.path.isdir(dirpath):
                 os.mkdir(dirpath)
         else:
-            dirpath = absolutepath # OPT optimizar para scripts y etc...
+            dirpath = absolutepath
 
         with open(os.path.join(dirpath, filename), "w") as file:
 
@@ -99,7 +96,7 @@ if __name__ == '__main__':
     #from fasta import fastaProcessorIO
 
     # if nothing is changed here this should work from the getgo since the paths are relative
-    adn_seqs = fastaProcessorIO.from_file('test_data/test_2.fasta')
+    adn_seqs = fastaProcessorIO.from_file('test_data/test_4.fasta')
 
     print(adn_seqs)
 
@@ -112,4 +109,4 @@ if __name__ == '__main__':
     wtf = fastaProcessorIO(lista_de_secuencias)
     
     wtf.writeFastaFile('nonstatic.fasta', maxlenght= 2)
-    #TODO e agora como fago que se garde o filepath para representar en string se se usou .from_file???   
+    print(wtf)
