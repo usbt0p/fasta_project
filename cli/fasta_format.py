@@ -1,6 +1,6 @@
 '''Example command:
 Comando de exemplo: 
-python -u "c:\\Users\\Canle\\Desktop\\Uni\\Programacion_2\\Proxecto_FASTA\\fasta_proyect_safe\\fasta_format.py" --input=test_data/test_2.fasta --output=ficherito_por_cmd.fasta --case=lower --maxLength=2
+python -u "c:\\<path to root dir>\\fasta_project\\cli\\fasta_format.py" --input=test_data/test_2.fasta --output=ficherito_por_cmd.fasta --case=lower --maxLength=2
 '''
 import sys # stdlib imports
 

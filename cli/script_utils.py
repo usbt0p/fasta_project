@@ -11,9 +11,9 @@ def script_transforms(input, output, *transformations):
 
     list_of_transformations = list()
 
-    # Instantiate transformer objects and update list of transformations based on given args
-    # All scripts take one single arg except for multiple_transformations, and 
-    # the design with a for loop and match stems from the design constraints that poses
+    '''Instantiate transformer objects and update list of transformations based on given args
+    All scripts take one single arg except for multiple_transformations, and 
+    the design with a for loop and match stems from the design constraints that poses'''
     for transformation in transformations:
         match transformation:
             case None:
@@ -29,9 +29,9 @@ def script_transforms(input, output, *transformations):
             case 'reverse_complement':
                 list_of_transformations.extend([Reverse(), Complement()])
 
-    # Instantiate to apply all trasformations once the list has been defined
-    # The .apply_transformations method directly returns the new list without storing it in the object
-    
+    '''Instantiate to apply all trasformations once the list has been defined
+    The .apply_transformations method returns the new list without storing it in the object,
+    but the initial transformations remain stored.'''
     transformer_object = SequenceListTransformer(list_of_transformations)
     new_fasta = transformer_object.apply_transformations(
         transformer_object.transf_list, input_fasta.sequenceObjects)

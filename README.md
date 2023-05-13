@@ -3,7 +3,7 @@
 First public release of the FASTA project!
 Current state: finished!
 
-- *Description of the project*:
+## *Description of the project*:
 This is a project made for the Programming II course.
 It provides a series of scripts for manipulating and representing
 FASTA sequences and `.fasta` files, which are files in a text-based
@@ -13,7 +13,7 @@ We use OOP to create sequence objects, that store identifiers and their
 nucleotid sequences. On top, multiple classes allow manipulation of
 sequences for various purposes.
 
-- *Scripts*:
+## *Scripts*:
 The project has a total of 5 scripts, each with different
 functionalities.
 
@@ -40,3 +40,34 @@ functionalities.
     each acid over total sequence length and for frequency of appearance
     of each sequence's length.
     Works both with `.fasta` files and with directories containing them.
+
+## *Installation*:
+
+For correct usage now the user should add the project directory to
+the environment variable PYTHONPATH so that Python knows where
+to search for the executable files.
+
+One way of doing it is this, do the following after downoading
+the project:
+- Go, through command line, to the root directory in which the project
+was downloaded in your PC.
+For example if you downloaded it to C:\user\documents, go to
+C:\user\documents\fasta_project.
+
+- Once there, you must add the path to the environment variable.
+In Windows, type the followng command: $env:PYTHONPATH = '.'
+On Linux, type: export PYTHONPATH=.
+
+- Of course, the same would work if '.' is substituted with the absolute
+path of the directory.
+
+- This must be done each time the terminal is opened to use the project,
+since the environment variable dissapears after closing it.
+
+- After that, experiment with the sample commands that are listed 
+in the script modules's docstrings. You will need `.fasta` files to manipulate.
+You can generate them online, save them in a `.txt` or other file format, and
+just rename them to the `.fasta` extension.
+Beware that the sequences in the file can only contain the following uppercase
+letters: A, C, T, G.
+

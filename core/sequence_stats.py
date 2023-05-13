@@ -2,6 +2,8 @@ from core.sequences import Sequence
 import csv
 
 class StatManager:
+    '''Performs basic statistical analysis of sequences.'''
+
     def __init__(self) -> None:
         self.fastaStats = None
         

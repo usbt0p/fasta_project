@@ -2,6 +2,9 @@ from abc import ABCMeta, abstractmethod
 from copy import deepcopy
 
 class AbstractTransformer(metaclass=ABCMeta):
+    '''We define a 'template' for our classes using an abstract class.
+    All classes inheriting from AbstractTransformer must implement
+    a __init__ and transform method.'''
 
     @abstractmethod
     def __init__(self) -> None:
@@ -114,7 +117,9 @@ class Complement(AbstractTransformer):
         return self.transformation
 
 class SequenceListTransformer:
-    '''Compose a list of functions recursively for a given Sequence object list.'''
+    '''Compose a list of functions recursively for a given Sequence object list.
+    Given `sequence` and a list `[DuplicatedIdentifiersRenamer(),Reverse(),Complement()]`,
+    it will compose like this: `Complement(Reverse(DuplicatedIdentifiersRenamer(sequence)))`.'''
 
     def __init__(self, transf_list : list) -> None: 
         self.transf_list = transf_list

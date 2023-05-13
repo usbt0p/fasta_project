@@ -1,11 +1,11 @@
 '''Scripts for getting statistics from sequences in `.fasta` files and directories with `.fasta` files, 
 writing them to csv files, and plotting the statistics saving the image plots.
 Example command:
-python -u "c:\\<your path>" --input=test_data\\test_3.fasta --output=savedFiles\\stat_table.csv
+python -u "c:\\<path to root dir>\\fasta_project\\cli\\fasta_summary.py" --input=test_data\\test_3.fasta --output=savedFiles\\stat_table.csv
 For saving a single file into `.csv` and saving images of the stats:
-python -u "c:\\<your path> --input=test_data/test_4.fasta --output=savedFiles/plot_shit.csv --extra-plots=savedFiles
+python -u "c:\\<path to root dir>\\fasta_project\\cli\\fasta_summary.py" --input=test_data/test_4.fasta --output=savedFiles/plot_shit.csv --extra-plots=savedFiles
 For saving all of a directory's `.fasta` files stats, and their respective plots:
-python -u "c:\\<your path>" --input=test_data --output=statFolder --extra-plots=statFolder
+python -u "c:\\<path to root dir>\\fasta_project\\cli\\fasta_summary.py" --input=test_data --output=statFolder --extra-plots=statFolder
 '''
 import sys #stdlib imports
 from os.path import isdir, join

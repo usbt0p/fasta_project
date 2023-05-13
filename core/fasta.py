@@ -3,7 +3,6 @@ from os import mkdir
 
 '''xestiono de esta forma que ambos modulos poidan funcionar dende 
 fora dos scripts, chamandose o un ao outro (sequences.py <---> fasta.py) sen problemas.'''
-
 if 'fasta' in __name__: 
     import __main__ as __main__
 

@@ -1,4 +1,5 @@
 def parseArgs(args):
+    '''The parser function provided as the skeleton of the project.'''
     toret = {}
     for arg in args:
         assert '--' in arg # changed from the original

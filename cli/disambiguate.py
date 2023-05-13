@@ -1,7 +1,7 @@
 '''Scripts for transforming `.fasta` files containing repeated identifiers.
 
 Example command:
-python -u "c:\\Users\\Canle\\Desktop\\Uni\\Programacion_2\\Proxecto_FASTA\\fasta_proyect_safe\\disambiguate.py" --input=test_data/test_3.fasta --output=NOAMBIGUO.fasta --mode=rename
+python -u "c:\\<path to root dir>\\fasta_project\\cli\\disambiguate.py" --input=test_data/test_3.fasta --output=NOAMBIGUO.fasta --mode=rename
 '''
 import sys #stdlib imports
 

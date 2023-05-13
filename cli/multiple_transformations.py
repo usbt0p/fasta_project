@@ -1,6 +1,6 @@
 '''Scripts for reversing and complementing sequences in `.fasta` files.
 Example command:
-python -u "c:\\Users\\Canle\\Desktop\\Uni\\Programacion_2\\Proxecto_FASTA\\fasta_proyect_safe\\multiple_transformations.py" --input=test_data/test_3.fasta --output=MULTI_transf.fasta --rename --reverse --complement
+python -u "c:\\<path to root dir>\\fasta_project\\cli\\multiple_transformations.py" --input=test_data/test_3.fasta --output=MULTI_transf.fasta --rename --reverse --complement
 '''
 import sys #stdlib imports
 
