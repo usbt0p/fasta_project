@@ -5,14 +5,17 @@ from os import mkdir
 fora dos scripts, chamandose o un ao outro (sequences.py <---> fasta.py) sen problemas.'''
 
 if 'fasta' in __name__: 
-    import __main__ 
+    import __main__ as __main__
+
     if 'sequences.py' in __main__.__file__:
             Sequence = __main__.Sequence 
             CaseType = __main__.CaseType # e así se asegura que cando se chama dende sequences todo funcione
     else:
-        from sequences import Sequence, CaseType
+        from core.sequences import Sequence, CaseType
+        __main__ = None 
+        # Intento de borrar un paquete enteiro pq non sei se python o fai auto e non quero telo na memoria
 else:
-    from sequences import Sequence, CaseType # isto faise cando fasta.py é __main__
+    from core.sequences import Sequence, CaseType # isto faise cando fasta.py é __main__
 
 
 def _fasta_load(fastaFilePath : str) -> list[Sequence]:

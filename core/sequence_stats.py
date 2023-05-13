@@ -1,4 +1,4 @@
-from sequences import Sequence
+from core.sequences import Sequence
 import csv
 
 class StatManager:

@@ -1,9 +1,4 @@
-TODO implementa a organización en carpetas con cli e core, e fai un script powershell ou bash en funcion
-do S.O. que engada $PYTHONPATH á variablel de entorno cada vez que se abra a carpetas
-
 TODO fai a documentación incluíndo o parser de mermaid e as imaxe que xenere!!
-
-TODO: Documentación general; module docstrings, function docstrings, comments, etc
 
 Definimos unha 'plantilla' para as nosas clases usando unha clase abstracta. A importancia de usar 
 clases abstractas é que se as nosas subclases non seguen esa plantilla, Python dará un erro.
@@ -21,7 +16,8 @@ senón crear novos obxectos que procesen e almacenen estas transformacións.
 Isto ten un impacto no uso de memoria do programa; crear obxectos que permanecen en memoria
 durante a execución ocupa máis memoria que aplicar funcións a obxectos xa existentes...
 Se este é o caso, cagueina, porque o meu código implementa funcións que toman unha lista de 
-secuencias e *modifican* as cadeas que conteñen, e despois devolven a lista coas cadeas modificadas. 
+secuencias e *modifican* as cadeas que conteñen, e despois devolven a lista coas cadeas modificadas.
+PD: ao final arregleino e usa deepcopy para copiar as orixinais e facer unha nova  
 
 - 3: se este non é o caso, e é correcto modificar as cadeas das secuencias; entón non sería mellor
 simplemente ter unha serie de funcións nun módulo?? Ao que vou é, non sei se remato de entender 

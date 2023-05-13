@@ -1,5 +1,5 @@
-import fasta as core
-from transformations_abstract import (SequenceListTransformer, Reverse, 
+import core.fasta as core
+from core.transformations_abstract import (SequenceListTransformer, Reverse, 
                                       Complement, DuplicatedIdentifiersRemover, 
                                       DuplicatedIdentifiersRenamer)
 
@@ -14,7 +14,6 @@ def script_transforms(input, output, *transformations):
     # Instantiate transformer objects and update list of transformations based on given args
     # All scripts take one single arg except for multiple_transformations, and 
     # the design with a for loop and match stems from the design constraints that poses
-    print(transformations)
     for transformation in transformations:
         match transformation:
             case None:

@@ -14,9 +14,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from argsparser import parseArgs # local imports
-from sequence_stats import StatManager
+from core.sequence_stats import StatManager
 from script_utils import ScriptErrorManager
-from fasta import fastaProcessorIO
+from core.fasta import fastaProcessorIO
 
 args = parseArgs(sys.argv[1:])
 

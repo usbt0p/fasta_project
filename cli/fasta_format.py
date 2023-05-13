@@ -1,14 +1,12 @@
 '''Example command:
 Comando de exemplo: 
 python -u "c:\\Users\\Canle\\Desktop\\Uni\\Programacion_2\\Proxecto_FASTA\\fasta_proyect_safe\\fasta_format.py" --input=test_data/test_2.fasta --output=ficherito_por_cmd.fasta --case=lower --maxLength=2
-Funciona maxicamente con este comando para carpetas irmás:
-python -m cli.fasta_format --input=test_data/test_2.fasta --output=ficherito_por_cmd.fasta --case=lower --maxLength=2
 '''
 import sys # stdlib imports
 
 from argsparser import parseArgs # local imports
-import fasta as core
-from sequences import CaseType
+import core.fasta as core
+from core.sequences import CaseType
 from script_utils import ScriptErrorManager
 
 ARGSET = {'input', 'output', 'case', 'maxLength'}
